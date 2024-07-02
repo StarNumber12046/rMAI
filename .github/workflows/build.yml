@@ -37,7 +37,7 @@ jobs:
       - uses: actions/download-artifact@v4
         id: download
         with:
-          name: myapp
+          name: rMAI
       - name: Build package
         uses: toltec-dev/build-action@v1
       - name: Save packages
@@ -71,7 +71,7 @@ jobs:
           run: |
             echo Y | toltecctl generate-opkg-conf
             opkg update
-            opkg install my-app
+            opkg install rmai
             # Add steps here to test app
-            opkg remove my-app
+            opkg remove rmai
           path: ${{ steps.download.outputs.download-path }}
