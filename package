@@ -1,16 +1,17 @@
-pkgnames=(my-app)
-pkgdesc="An example application package"
-url=https://example.com
+pkgnames=(rmai)
+pkgdesc="reMarkable client for llama2 using replicate"
+url=https://github.com/StarNumber12046/rMAI
 pkgver=0.0.1-1
 timestamp=2020-10-09T18:15Z
 section=util
-maintainer="My Name <me@example.com>"
+maintainer="StarNumber <starnumber.official12046@gmail.com>"
 license=MIT
 installdepends=(simple)
 
 source=(
-    myapp.bin
+    rMAI.bin
     myapp.oxide
+    rMAI.draft
 )
 sha256sums=(
     SKIP
@@ -18,6 +19,6 @@ sha256sums=(
 )
 
 package() {
-    install -D -m 755 -t "$pkgdir"/opt/bin/myapp "$srcdir"/myapp.bin
+    install -D -m 755 -t "$pkgdir"/opt/bin/rMAI "$srcdir"/rMAI.bin
     install -D -m 655 -t "$pkgdir"/opt/usr/share/applications/ "$srcdir"/myapp.oxide
 }

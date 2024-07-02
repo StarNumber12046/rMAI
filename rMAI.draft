@@ -1,0 +1,4 @@
+name=rMAi
+desc=reMarkable client for llama2 using replicate
+call=/opt/bin/rMAi
+term=:
