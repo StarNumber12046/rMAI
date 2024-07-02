@@ -1,7 +1,8 @@
 import argparse
+import importlib
 
 from myapp.classes import reMarkable
-from myapp.views.ExampleView import ExampleView
+from myapp.views.HomeView import ExampleView
 
 
 def quit_hook(clicked):
@@ -32,9 +33,13 @@ def main():
     rm.update_view(ExampleView(rm))
     print("Updated base view")
     while True:
-        clicked = rm.display()
-        if quit_hook(clicked) == "exit":
-            break
-        
-        rm.view.handle_buttons(clicked) # type: ignore
-
+        try:
+            clicked = rm.display()
+            if quit_hook(clicked) == "exit":
+                break
+            rm.view.handle_buttons(clicked) # type: ignore
+        except:
+            rm.reset()
+            rm.update_view(importlib.import_module("myapp.views.ErrorView").ErrorView(rm))
+            rm.display()
+            rm.view.display()
